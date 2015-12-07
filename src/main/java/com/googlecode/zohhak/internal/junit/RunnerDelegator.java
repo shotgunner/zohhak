@@ -74,10 +74,12 @@ public class RunnerDelegator {
 	}
 
 	public static List<FrameworkMethod> getClassChildrenToDescribe(TestClass testClass, List<FrameworkMethod> standardTestMethods) {
-		List<FrameworkMethod> result = new ArrayList<FrameworkMethod>();
-		result.addAll(standardTestMethods);
+		Set<FrameworkMethod> resultSet = new HashSet<FrameworkMethod>();
+		resultSet.addAll(standardTestMethods);
 		List<FrameworkMethod> annotatedMethods = getAnnotatedMethods(testClass);
-		result.addAll(annotatedMethods);
+		resultSet.addAll(annotatedMethods);
+        List<FrameworkMethod> result= new ArrayList();
+        result.addAll(resultSet);
 		return result;
 	}
 

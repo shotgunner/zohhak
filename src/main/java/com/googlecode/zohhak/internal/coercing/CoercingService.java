@@ -56,7 +56,7 @@ public class CoercingService {
                 {
                     parameters[i] = Class.forName(parameterType.getTypeName()).newInstance();
                 }
-                catch (ClassNotFoundException | InstantiationException | IllegalAccessException f)
+                catch (InstantiationException | IllegalAccessException | ClassNotFoundException f)
                 {
                     System.out.println(f);
                 }
@@ -66,7 +66,7 @@ public class CoercingService {
 	}
 
     private Boolean isInReservedAnnotations(Parameter param){
-        for (Annotation paramAnnotation: param.getAnnotations()){
+        for (Annotation paramAnnotation : param.getAnnotations()) {
             if(reservedAnnotationsList.contains(paramAnnotation.annotationType().getName()))
                 return true;
         }
